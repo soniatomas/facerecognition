@@ -105,8 +105,18 @@ class App extends Component {
   onButtonSubmit = () => {
     // Set the image url
     this.setState({imageUrl: this.state.input});
-    
+        // Code that works locally on computer
+        /*
         fetch('http://localhost:3002/callclarifaiapi', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+              imageUrl: this.state.input
+            })
+          })
+        */
+        // using my deployed smart-brain api
+        fetch('https://dry-cliffs-21546.herokuapp.com/callclarifaiapi', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -118,7 +128,18 @@ class App extends Component {
             this.displayFaceBox(this.calculateFaceLocation(result));
             // as long as we get a response from our api, we will update 
             // the number of entries for user
+            // Code that works locally on computer
+            /*
             fetch('http://localhost:3002/image', {
+              method: 'put',
+              headers: {'Content-Type': 'application/json'},
+              body: JSON.stringify({
+                id: this.state.user.id
+              })
+            })
+            */
+            // Using my deployed smart-brain api
+            fetch('https://dry-cliffs-21546.herokuapp.com/image', {
               method: 'put',
               headers: {'Content-Type': 'application/json'},
               body: JSON.stringify({

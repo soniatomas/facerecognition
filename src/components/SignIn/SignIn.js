@@ -27,7 +27,19 @@ class SignIn extends React.Component {
 
 	onSubmitSignIn = () => {
 		// console.log(this.state);
+		// code that works locally on computer
+		/*
 		fetch('http://localhost:3002/signin', {
+			method: 'post',
+			headers: {'Content-Type': 'application/json'},
+			body: JSON.stringify({
+				email: this.state.signInEmail,
+				password: this.state.signInPassword
+			})
+		})
+		*/
+		// using my deployed smart-brain api
+		fetch('https://dry-cliffs-21546.herokuapp.com/signin', {
 			method: 'post',
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({

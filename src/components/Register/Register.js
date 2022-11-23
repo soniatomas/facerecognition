@@ -24,8 +24,21 @@ class Register extends React.Component {
 		this.setState({password: event.target.value})
 	}
 	onRegisterNewUser = () => {
-		console.log(this.state);
+		// console.log(this.state);
+		// Code that works locally on computer
+		/*
 		fetch('http://localhost:3002/register', {
+			method: 'post',
+			headers: {'Content-Type': 'application/json'},
+			body: JSON.stringify({
+				email: this.state.email,
+				password: this.state.password,
+				name: this.state.name
+			})
+		})
+		*/
+		// using my deployed smart-brain api
+		fetch('https://dry-cliffs-21546.herokuapp.com/register', {
 			method: 'post',
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({
@@ -36,7 +49,7 @@ class Register extends React.Component {
 		})
 		.then(response => response.json())
 		.then(user => {
-			console.log(user);
+			// console.log(user);
 			if (user.id) {
 				this.props.loadUser(user);
 				this.props.onRouteChange('home');
